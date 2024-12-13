@@ -9,15 +9,26 @@ import { useTranslation } from 'react-i18next';
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
+
+  // Función para manejar el clic en el botón "Guardar cambios"
+  const handleSaveChanges = () => {
+    console.log('Guardando cambios...');
+    alert('¡Los cambios han sido guardados con éxito!');
+    // Aquí puedes añadir lógica para enviar datos a un servidor o manejar cambios en el estado.
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen flex flex-col dark:bg-dark-background">
       <Header />
       <div className="bg-white dark:bg-dark-surface2 shadow-lg dark:shadow-gray-900 rounded-lg p-8 w-full max-w-5xl mx-auto mt-8 flex h-full">
         <Sidebar />
         <div className="w-3/4 pl-8 overflow-hidden">
+          {/* Título de perfil */}
           <h1 className="text-2xl font-semibold mb-6 text-black dark:text-gray-200">
             {t('profile.title')}
           </h1>
+
+          {/* Resumen de perfil */}
           <div className="flex items-center gap-6 mb-6">
             <ProfilePicture />
             <textarea
@@ -27,10 +38,17 @@ const Home: React.FC = () => {
               rows={3}
             />
           </div>
+
+          {/* Formularios y detalles de la cuenta */}
           <ProfileForm />
           <AccountOverview />
+
+          {/* Botón "Guardar cambios" */}
           <div className="text-right">
-            <button className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">
+            <button
+              onClick={handleSaveChanges}
+              className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors"
+            >
               {t('profile.overView.saveBtn')}
             </button>
           </div>
@@ -41,3 +59,4 @@ const Home: React.FC = () => {
 };
 
 export default Home;
+
